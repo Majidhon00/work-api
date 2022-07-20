@@ -9,14 +9,17 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.3.4/css/searchBuilder.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
+
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
@@ -450,10 +453,11 @@
   <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="{{asset('vendors/chart.js/Chart.min.js')}}"></script>
-  <script src="{{asset('vendors/datatables.net/jquery.dataTables.js')}}"></script>
-  <script src="{{asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-  <script src="{{asset('js/dataTables.select.min.js')}}"></script>
+  <script src="{{asset('vendors/code/jquery-3.js')}}"></script>
+  <script src="{{asset('vendors/datatables.net/select2.js')}}"></script>
+  <script src="{{asset('vendors/datatables.net/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('vendors/datatables.net/dataTables.searchBuilder.min.js')}}"></script>
+  <script src="{{asset('vendors/datatables.net/dataTables.dateTime.min.js')}}"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -466,6 +470,14 @@
   <!-- Custom js for this page-->
   <script src="{{asset('js/dashboard.js')}}"></script>
   <script src="{{asset('js/Chart.roundedBarCharts.js')}}"></script>
+
+  <script>
+    $(document).ready(function() {
+      let table = $('#example').DataTable();
+      new $.fn.dataTable.SearchBuilder(table, {});
+      table.searchBuilder.container().prependTo(table.table().container());
+    });
+  </script>
   <!-- End custom js for this page-->
 </body>
 
